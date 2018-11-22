@@ -1,0 +1,24 @@
+<h2>{{title}}</h2>
+
+{{#if success }}
+<section class="success">
+    <h2>Registered successfully !!</h2>
+</section>
+{{else}} {{# if errors}}
+<section class="error">
+    <ul>
+        {{# each errors}}
+        <li>{{this.msg}}</li>
+        {{/each}}
+    </ul>
+</section>
+{{/if}}
+<form action="#" method="POST">
+    User name:
+    <input type="text" name="username"><br> Email:
+    <input type="email" name="email"><br> Password:
+    <input type="password" name="password"><br> Confirm password:
+    <input type="password" name="confirmpassword"><br>
+    <input type="submit" value="Submit">
+</form>
+{{/if}}

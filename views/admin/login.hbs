@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>{{AdminTitle}}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Bootstrap -->
+	<link href="../public/stylesheets/bootstrap.min.css" rel="stylesheet">
+	<!-- styles -->
+	<link href="../public/stylesheets/AdminStyles.css" rel="stylesheet">
+	<link rel="icon" href="../public/Images/favicon.ico" sizes="32x32" />
+	<script src="../public/Scripts/jquery.min.js"></script>
+	<script src="../public/Scripts/bootstrap.min.js"></script>
+</head>
+
+<body class="login-bg">
+	<div class="page-content container">
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<div class="login-wrapper">
+					<div class="box">
+						<div class="content-wrap">
+							<div class="login-logo">
+								<img width="80" src="../Images/login-logo.png" alt="Logo" />
+								<h6>Login</h6>
+							</div>
+							<form action="/admin/Login" method="POST">
+								<div class="form-group has-feedback">
+									<div class="form-group has-feedback">
+										<input type="email" name="username" class="form-control" placeholder="username" required>
+										<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+									</div>
+								</div>
+								<div class="form-group has-feedback">
+									<input type="password" name="password" class="form-control" placeholder="password" required>
+									<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+								</div>
+								<button type="submit" class="btn btn-primary btn-block btn-flat" value="Login" signup>Login</button>
+							</form>
+							<span class="{{style}}">
+								<strong>{{message}}</strong>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
+<script>
+	window.setTimeout(function () {
+		$(".error-msg").fadeTo(500, 0).slideUp(500, function () {
+			$(this).remove();
+		});
+	}, 4000);
+</script>

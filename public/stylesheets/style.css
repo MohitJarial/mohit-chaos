@@ -1,0 +1,22 @@
+body {
+  padding: 55px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.container {
+    background: #efefef none repeat scroll 0 0;
+    border-radius: 15px;
+    height: 500px;
+    width: auto;
+}
+
+h1 {
+    color: blue;
+    float: left;
+    font-size: 55px;
+    margin: 15% 0 0 40%;
+}

@@ -1,0 +1,644 @@
+{
+    "project": {},
+    "files": {
+        "Models\\chat.js": {
+            "name": "Models\\chat.js",
+            "modules": {
+                "Chat": 1
+            },
+            "classes": {
+                "Chat Model": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "Models\\common.js": {
+            "name": "Models\\common.js",
+            "modules": {},
+            "classes": {
+                "Common Model": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "routes\\api\\chat.js": {
+            "name": "routes\\api\\chat.js",
+            "modules": {},
+            "classes": {
+                "Chat Api's'": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "routes\\api\\users.js": {
+            "name": "routes\\api\\users.js",
+            "modules": {},
+            "classes": {
+                "User Api's'": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "routes\\index.js": {
+            "name": "routes\\index.js",
+            "modules": {},
+            "classes": {
+                "Home page": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "newrelic.js": {
+            "name": "newrelic.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "Chat": {
+            "name": "Chat",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "Chat Model": 1,
+                "Common Model": 1,
+                "Chat Api's'": 1,
+                "User Api's'": 1,
+                "Home page": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "routes\\index.js",
+            "line": 1
+        }
+    },
+    "classes": {
+        "Chat Model": {
+            "name": "Chat Model",
+            "shortname": "Chat Model",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Chat",
+            "file": "Models\\chat.js",
+            "line": 1,
+            "is_constructor": 1
+        },
+        "Common Model": {
+            "name": "Common Model",
+            "shortname": "Common Model",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Chat",
+            "namespace": "",
+            "file": "Models\\common.js",
+            "line": 1,
+            "is_constructor": 1
+        },
+        "Chat Api's'": {
+            "name": "Chat Api's'",
+            "shortname": "Chat Api's'",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Chat",
+            "namespace": "",
+            "file": "routes\\api\\chat.js",
+            "line": 1,
+            "description": "These are chat related api's."
+        },
+        "User Api's'": {
+            "name": "User Api's'",
+            "shortname": "User Api's'",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Chat",
+            "namespace": "",
+            "file": "routes\\api\\users.js",
+            "line": 1,
+            "description": "These are user related api's."
+        },
+        "Home page": {
+            "name": "Home page",
+            "shortname": "Home page",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Chat",
+            "namespace": "",
+            "file": "routes\\index.js",
+            "line": 1
+        }
+    },
+    "elements": {},
+    "classitems": [
+        {
+            "file": "Models\\chat.js",
+            "line": 24,
+            "description": "To save user chat history",
+            "itemtype": "method",
+            "name": "SaveUserChatHistory",
+            "params": [
+                {
+                    "name": "userId,questionid,questiontext,replytext",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Json"
+            },
+            "class": "Chat Model",
+            "module": "Chat"
+        },
+        {
+            "file": "Models\\chat.js",
+            "line": 58,
+            "description": "Method to save user chat history",
+            "itemtype": "method",
+            "name": "GetRandomStayingInOption",
+            "return": {
+                "description": "Returns array of Options on success",
+                "type": "Array"
+            },
+            "class": "Chat Model",
+            "module": "Chat"
+        },
+        {
+            "file": "Models\\common.js",
+            "line": 26,
+            "description": "To register user",
+            "itemtype": "method",
+            "name": "RegisterUser",
+            "params": [
+                {
+                    "name": "email",
+                    "description": "email",
+                    "type": "String"
+                },
+                {
+                    "name": "name",
+                    "description": "name",
+                    "type": "String"
+                },
+                {
+                    "name": "password",
+                    "description": "password",
+                    "type": "String"
+                },
+                {
+                    "name": "accesstoken",
+                    "description": "accesstoken",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Returns Sucess message on success",
+                "type": "Json"
+            },
+            "class": "Common Model",
+            "module": "Chat"
+        },
+        {
+            "file": "Models\\common.js",
+            "line": 102,
+            "description": "To check email existance in database",
+            "itemtype": "method",
+            "name": "IsEmailExist",
+            "params": [
+                {
+                    "name": "email",
+                    "description": "email",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Returns true on success",
+                "type": "Json"
+            },
+            "class": "Common Model",
+            "module": "Chat"
+        },
+        {
+            "file": "Models\\common.js",
+            "line": 125,
+            "description": "To get all the active questions with option",
+            "itemtype": "method",
+            "name": "GetQuestion",
+            "return": {
+                "description": "Returns array of questions on success",
+                "type": "Array"
+            },
+            "class": "Common Model",
+            "module": "Chat"
+        },
+        {
+            "file": "Models\\common.js",
+            "line": 147,
+            "description": "My method description.  Like other pieces of your comment blocks, \nthis can span multiple lines.",
+            "itemtype": "method",
+            "name": "SaveNotification",
+            "params": [
+                {
+                    "name": "email",
+                    "description": "email",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Returns true on success",
+                "type": "Boolean"
+            },
+            "class": "Common Model",
+            "module": "Chat"
+        },
+        {
+            "file": "Models\\common.js",
+            "line": 164,
+            "description": "Method to save user location",
+            "itemtype": "method",
+            "name": "SaveUserLocation",
+            "params": [
+                {
+                    "name": "UserId",
+                    "description": "UserId",
+                    "type": "Int"
+                },
+                {
+                    "name": "Latitude",
+                    "description": "Latitude",
+                    "type": "String"
+                },
+                {
+                    "name": "Longitude",
+                    "description": "Longitude",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Returns success message on success",
+                "type": "Json"
+            },
+            "class": "Common Model",
+            "module": "Chat"
+        },
+        {
+            "file": "Models\\common.js",
+            "line": 200,
+            "description": "Method to save user location",
+            "itemtype": "method",
+            "name": "SaveUserMood",
+            "params": [
+                {
+                    "name": "UserId",
+                    "description": "UserId",
+                    "type": "Int"
+                },
+                {
+                    "name": "Mood",
+                    "description": "Mood",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Returns success message on success",
+                "type": "Json"
+            },
+            "class": "Common Model",
+            "module": "Chat"
+        },
+        {
+            "file": "Models\\common.js",
+            "line": 236,
+            "description": "Method to Authenticate User",
+            "itemtype": "method",
+            "name": "GetAuthenticateUser",
+            "params": [
+                {
+                    "name": "email",
+                    "description": "email",
+                    "type": "String"
+                },
+                {
+                    "name": "password",
+                    "description": "password",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Returns User data on success",
+                "type": "Json"
+            },
+            "class": "Common Model",
+            "module": "Chat"
+        },
+        {
+            "file": "Models\\common.js",
+            "line": 270,
+            "description": "Method to save answers of questions for User",
+            "itemtype": "method",
+            "name": "SaveUserResult",
+            "params": [
+                {
+                    "name": "userId",
+                    "description": "userId",
+                    "type": "String"
+                },
+                {
+                    "name": "results",
+                    "description": "results contains array for questionid and their answerId",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Returns success message",
+                "type": "Json"
+            },
+            "class": "Common Model",
+            "module": "Chat"
+        },
+        {
+            "file": "routes\\api\\chat.js",
+            "line": 10,
+            "description": "inherit common class to call api functions",
+            "class": "Chat Api's'",
+            "module": "Chat"
+        },
+        {
+            "file": "routes\\api\\chat.js",
+            "line": 15,
+            "description": "Api to chat history",
+            "itemtype": "method",
+            "name": "SaveChatHistory",
+            "params": [
+                {
+                    "name": "userId",
+                    "description": "logged in user",
+                    "type": "Integer"
+                },
+                {
+                    "name": "questionid",
+                    "description": "",
+                    "type": "Integer"
+                },
+                {
+                    "name": "questiontext",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "replytext",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Returns success message",
+                "type": "Json"
+            },
+            "class": "Chat Api's'",
+            "module": "Chat"
+        },
+        {
+            "file": "routes\\api\\chat.js",
+            "line": 26,
+            "description": "Api to chat history",
+            "itemtype": "method",
+            "name": "SaveChatHistory @param  userId logged in user @param {integer} questionid  @param {string} questiontext  @param {string} replytext  @return {Json} Returns success message",
+            "type": "Integer",
+            "class": "Chat Api's'",
+            "module": "Chat"
+        },
+        {
+            "file": "routes\\api\\users.js",
+            "line": 9,
+            "description": "inherit common class to call api functions",
+            "class": "User Api's'",
+            "module": "Chat"
+        },
+        {
+            "file": "routes\\api\\users.js",
+            "line": 14,
+            "description": "To check user name existance in database",
+            "itemtype": "method",
+            "name": "helloworld",
+            "return": {
+                "description": "Returns sucess message on success",
+                "type": "Json"
+            },
+            "class": "User Api's'",
+            "module": "Chat"
+        },
+        {
+            "file": "routes\\api\\users.js",
+            "line": 29,
+            "description": "Api to register user",
+            "itemtype": "method",
+            "name": "Register",
+            "return": {
+                "description": "Returns sucess message on success",
+                "type": "Json"
+            },
+            "class": "User Api's'",
+            "module": "Chat"
+        },
+        {
+            "file": "routes\\api\\users.js",
+            "line": 36,
+            "description": "Api to get all the questions with options",
+            "itemtype": "method",
+            "name": "QuestionsApi",
+            "return": {
+                "description": "Returns array of questoins on success",
+                "type": "Array"
+            },
+            "class": "User Api's'",
+            "module": "Chat"
+        },
+        {
+            "file": "routes\\api\\users.js",
+            "line": 43,
+            "description": "Api to Save User Location",
+            "itemtype": "method",
+            "name": "SaveUserLocationApi",
+            "params": [
+                {
+                    "name": "UserId",
+                    "description": "UserId",
+                    "type": "Int"
+                },
+                {
+                    "name": "Latitude",
+                    "description": "Latitude",
+                    "type": "String"
+                },
+                {
+                    "name": "Longitude",
+                    "description": "Longitude",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Returns success message on success",
+                "type": "Json"
+            },
+            "class": "User Api's'",
+            "module": "Chat"
+        },
+        {
+            "file": "routes\\api\\users.js",
+            "line": 53,
+            "description": "Api to Save User Mood",
+            "itemtype": "method",
+            "name": "SaveUserMoodApi",
+            "params": [
+                {
+                    "name": "UserId",
+                    "description": "UserId",
+                    "type": "Int"
+                },
+                {
+                    "name": "Mood",
+                    "description": "Mood",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Returns success message on success",
+                "type": "Json"
+            },
+            "class": "User Api's'",
+            "module": "Chat"
+        },
+        {
+            "file": "routes\\api\\users.js",
+            "line": 62,
+            "description": "Api to Get Authenticate User",
+            "itemtype": "method",
+            "name": "GetAuthenticateUserApi",
+            "params": [
+                {
+                    "name": "email",
+                    "description": "email",
+                    "type": "String"
+                },
+                {
+                    "name": "password",
+                    "description": "password",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Returns User data on success",
+                "type": "Json"
+            },
+            "class": "User Api's'",
+            "module": "Chat"
+        },
+        {
+            "file": "routes\\api\\users.js",
+            "line": 71,
+            "description": "Api to save User's answers",
+            "itemtype": "method",
+            "name": "SaveUserResult",
+            "params": [
+                {
+                    "name": "userId",
+                    "description": "userId",
+                    "type": "String"
+                },
+                {
+                    "name": "results",
+                    "description": "results for questionid with answers id",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Returns message on success",
+                "type": "Json"
+            },
+            "class": "User Api's'",
+            "module": "Chat"
+        },
+        {
+            "file": "routes\\index.js",
+            "line": 9,
+            "itemtype": "method",
+            "name": "Index",
+            "return": {
+                "description": "Load html of landing page"
+            },
+            "class": "Home page",
+            "module": "Chat"
+        },
+        {
+            "file": "newrelic.js",
+            "line": 5,
+            "description": "New Relic agent configuration.\n\nSee lib/config.defaults.js in the agent distribution for a more complete\ndescription of configuration variables and their potential values.",
+            "class": "",
+            "module": "Chat"
+        },
+        {
+            "file": "newrelic.js",
+            "line": 12,
+            "description": "Array of application names.",
+            "class": "",
+            "module": "Chat"
+        },
+        {
+            "file": "newrelic.js",
+            "line": 17,
+            "description": "Your New Relic license key.",
+            "class": "",
+            "module": "Chat"
+        },
+        {
+            "file": "newrelic.js",
+            "line": 22,
+            "description": "Level at which to log. 'trace' is most useful to New Relic when diagnosing\nissues with the agent, 'info' and higher will impose the least overhead on\nproduction applications.",
+            "class": "",
+            "module": "Chat"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "Missing item type\ninherit common class to call api functions",
+            "line": " routes\\api\\chat.js:10"
+        },
+        {
+            "message": "Missing item type\ninherit common class to call api functions",
+            "line": " routes\\api\\users.js:9"
+        },
+        {
+            "message": "Missing item type\nNew Relic agent configuration.\n\nSee lib/config.defaults.js in the agent distribution for a more complete\ndescription of configuration variables and their potential values.",
+            "line": " newrelic.js:5"
+        },
+        {
+            "message": "Missing item type\nArray of application names.",
+            "line": " newrelic.js:12"
+        },
+        {
+            "message": "Missing item type\nYour New Relic license key.",
+            "line": " newrelic.js:17"
+        },
+        {
+            "message": "Missing item type\nLevel at which to log. 'trace' is most useful to New Relic when diagnosing\nissues with the agent, 'info' and higher will impose the least overhead on\nproduction applications.",
+            "line": " newrelic.js:22"
+        }
+    ]
+}
