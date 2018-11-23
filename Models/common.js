@@ -4,7 +4,7 @@
 */
 const pg = require('pg');
 var Queries = require('../Models/Queries');
-var jwt = require('jsonwebtoken');
+//var jwt = require('jsonwebtoken');
 var Cryptr = require('cryptr'), cryptr = new Cryptr(process.env.DB_PASSWORD);
 var config = require('../Models/config');
 
