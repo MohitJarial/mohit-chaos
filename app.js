@@ -4,7 +4,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var rollbar = require('rollbar');
 var expressValidator=require('express-validator');
 var expressSession=require('express-session');
 var dotenv = require('dotenv');
@@ -53,7 +52,7 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-var RollbarSecretKey = process.env.ROLLBAR_ACCESS_TOKEN;
+//var RollbarSecretKey = process.env.ROLLBAR_ACCESS_TOKEN;
 //app.use(rollbar.errorHandler(RollbarSecretKey));
 
 //app.listen(6943);
