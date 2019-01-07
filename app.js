@@ -1,12 +1,15 @@
+global.environmentServer = { Production: 'Production', Development: 'Development', Staging: 'Staging' };
+require('newrelic');
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const expressValidator=require('express-validator');
-const expressSession=require('express-session');
+const expressValidator = require('express-validator');
+const expressSession = require('express-session');
 const dotenv = require('dotenv');
+const rollbar = require("rollbar");
 dotenv.load();
 
 const index = require('./routes/index');
@@ -20,42 +23,37 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(expressSession({secret:'max', saveUninitialized:false,resave:false }));
+app.use(expressSession({ secret: 'max', saveUninitialized: false, resave: false }));
 app.use('/', index);
-app.use('/admin',require('./routes/admin/login'));
-app.use('/api',require('./routes/api/users'));
+app.use('/admin', require('./routes/admin/login'));
+app.use('/api', require('./routes/api/users'));
 
-app.get('/favicon.ico', function(req, res) {
-    res.send(200);
+app.get('/favicon.ico', function (req, res) {
+  res.send(200);
 });
 
 app.use('/public', express.static(__dirname + '/public'));
 app.use('/out', express.static(__dirname + '/out'));
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
-//const RollbarSecretKey = process.env.ROLLBAR_ACCESS_TOKEN;
-//app.use(rollbar.errorHandler(RollbarSecretKey));
-
-//app.listen(6943);
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-  if(err.status == 404){
-    // do nothing
+rollbar.init(process.env.ROLLBAR_ACCESS_TOKEN, { environment: process.env.ENVIRONMENT });
+app.use((err, req, res, next)=> {
+  if (err.status == 404) {
+    res.render('404', { layout: null, url: req.url });
   }
-  else{
-     // rollbar.reportMessage("Err: "+err.message);    
+  else if (err.status == 500) {
+    if (process.env.ENVIRONMENT != environmentServer.Development)
+      rollbar.handleError(err, req);
+    res.render('500');
+  }
+  else {
+    if (process.env.ENVIRONMENT != environmentServer.Development)
+      rollbar.handleError(err, req);
   }
 });
 
