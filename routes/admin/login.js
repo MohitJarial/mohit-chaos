@@ -1,9 +1,9 @@
 /**
 * @class Login page
 */
-var express = require('express');
-var router = express.Router();
-var users = require('../../Models/users');
+const express = require('express');
+const router = express.Router();
+const users = require('../../Models/users');
 /**
  * Login page
 * @method Login

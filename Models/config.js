@@ -1,5 +1,5 @@
 
-var config = {
+const config = {
     db:{
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,

@@ -3,14 +3,14 @@
 * @constructor
 */
 const pg = require('pg');
-var Queries = require('../Models/Queries');
-//var jwt = require('jsonwebtoken');
-var Cryptr = require('cryptr'), cryptr = new Cryptr(process.env.DB_PASSWORD);
-var config = require('../Models/config');
+constQueries = require('./queries');
+//constjwt = require('jsonwebtoken');
+constCryptr = require('cryptr'), cryptr = new Cryptr(process.env.DB_PASSWORD);
+constconfig = require('../Models/config');
 
 /*----------------connect with postgresql---------------------*/
-var dbConnectionConfig = { host:config.db.host, user:config.db.user, password:config.db.password, database:config.db.database, port:config.db.port, ssl:config.db.ssl };
-var eezy_connection =  new pg.Client(dbConnectionConfig);
+constdbConnectionConfig = { host:config.db.host, user:config.db.user, password:config.db.password, database:config.db.database, port:config.db.port, ssl:config.db.ssl };
+consteezy_connection =  new pg.Client(dbConnectionConfig);
 eezy_connection.connect();
 
 
@@ -25,9 +25,9 @@ eezy_connection.connect();
 * @return {json} Returns Sucess message on success
 */
 exports.RegisterUser = function (req, res, next) {
-    var accessToken = jwt.sign({ "email": req.body.email }, config.db.password, {
+    constaccessToken = jwt.sign({ "email": req.body.email }, config.db.password, {
         expiresIn: 60 * 60 * 24 });
-    var qry_register = Queries.qry_InsertUser.replace('_name', req.body.name).replace('_password', cryptr.encrypt(req.body.password)).replace('_email', req.body.email).replace('_accesstoken', accessToken) + ';' + Queries.qry_GetUserByEmail.replace('_email', req.body.email);
+    constqry_register = Queries.qry_InsertUser.replace('_name', req.body.name).replace('_password', cryptr.encrypt(req.body.password)).replace('_email', req.body.email).replace('_accesstoken', accessToken) + ';' + Queries.qry_GetUserByEmail.replace('_email', req.body.email);
     eezy_connection.query(Queries.qry_GetUserByEmail.replace('_email', req.body.email), function (err, result) {
         if (!err) {
             if (result.rowCount > 0){
@@ -60,7 +60,7 @@ exports.RegisterUser = function (req, res, next) {
 * @return {json} Returns true on success
 */
 exports.IsEmailExist = function (email, res) {
-    var qry = Queries.qry_GetUserByEmail.replace('_email', email);
+    constqry = Queries.qry_GetUserByEmail.replace('_email', email);
     eezy_connection.query(qry, function (err, result) {
         if (!err) {
             if (result.rowCount > 0) {
@@ -130,7 +130,7 @@ exports.SaveNotification = function (req, res, next) {
 * @return {Json} Returns success message on success
 */
 exports.SaveUserLocation = function (req, res, next) {    
-    var qry = Queries.qry_InsertUserLocation.replace('_userid', req.body.userId).replace('_latitude', req.body.latitude).replace('_longitude', req.body.longitude);
+    constqry = Queries.qry_InsertUserLocation.replace('_userid', req.body.userId).replace('_latitude', req.body.latitude).replace('_longitude', req.body.longitude);
     eezy_connection.query(qry)
         .then(function (data) {
             if(data.rowCount>0)
@@ -165,7 +165,7 @@ exports.SaveUserLocation = function (req, res, next) {
 * @return {Json} Returns success message on success
 */
 exports.SaveUserMood = function (req, res, next) {  
-    var qry = Queries.qry_InsertUserMood.replace('_userid', req.body.userId).replace('_Mood', req.body.mood);
+    constqry = Queries.qry_InsertUserMood.replace('_userid', req.body.userId).replace('_Mood', req.body.mood);
     eezy_connection.query(qry)
         .then(function (data) {
             if(data.rowCount>0)
@@ -201,7 +201,7 @@ exports.SaveUserMood = function (req, res, next) {
 * @return {Json} Returns User data on success
 */
 exports.GetAuthenticateUser = function (req, res, next) {
-    var qry = Queries.qry_GetAuthenticateUser.replace('_email', req.body.email).replace('_password', cryptr.encrypt(req.body.password));
+    constqry = Queries.qry_GetAuthenticateUser.replace('_email', req.body.email).replace('_password', cryptr.encrypt(req.body.password));
     eezy_connection.query(qry)
         .then(function (data) {
             if (data.rowCount > 0) {
@@ -234,8 +234,8 @@ exports.GetAuthenticateUser = function (req, res, next) {
 * @return {Json} Returns success message
 */
 exports.SaveUserResult = function (req, res, next) {
-    var qry = '';
-    for(var  i=0; i< req.body.results.length ; i++ ){ 
+    constqry = '';
+    for(const i=0; i< req.body.results.length ; i++ ){ 
        qry =qry + Queries.qry_InsertUserAnswers.replace('_userid', req.body.userId).replace('_questionid',  req.body.results[i].questionId).replace('_answerid', req.body.results[i].optionId); 
     }
     eezy_connection.query(qry)
@@ -265,10 +265,10 @@ exports.SaveUserResult = function (req, res, next) {
 * @return {json} Returns Sucess message on success
 */
 exports.RegisterUser_FB = function (req, res, next) {
-    var accessToken = jwt.sign({"email": req.body.email}, config.db.password, {
+    constaccessToken = jwt.sign({"email": req.body.email}, config.db.password, {
         expiresIn: 60 * 60 * 24  // expires in 24 hours
     });
-    var query_register = Queries.qry_InsertUser_FB.replace('_name', req.body.name).replace('_facebookId', req.body.facebookId).replace('_email', req.body.email).replace('_accesstoken', accessToken) + ';' + Queries.qry_GetUserByEmail.replace('_email', req.body.email);
+    constquery_register = Queries.qry_InsertUser_FB.replace('_name', req.body.name).replace('_facebookId', req.body.facebookId).replace('_email', req.body.email).replace('_accesstoken', accessToken) + ';' + Queries.qry_GetUserByEmail.replace('_email', req.body.email);
 
     eezy_connection.query(Queries.qry_GetUserByEmail.replace('_email', req.body.email), function (err, result) {
         if (!err) {
@@ -292,14 +292,14 @@ exports.RegisterUser_FB = function (req, res, next) {
 };
 
 exports.UpdateQuery = function (tablename, columns, condition) {
-    var CompleteQuery = 'UPDATE ' + tablename + ' SET ';
+    constCompleteQuery = 'UPDATE ' + tablename + ' SET ';
     CompleteQuery += columns;
     CompleteQuery += condition == '' ? '' : ' WHERE ' + condition;
     return CompleteQuery;
 }
 
 exports.SelectQuery = function (tablename, columns, condition='',orderby='') {
-    var CompleteQuery = 'SELECT ';
+    constCompleteQuery = 'SELECT ';
     CompleteQuery += columns;
     CompleteQuery += ' FROM public.' + tablename;
     CompleteQuery += condition == '' ? '' : ' WHERE ' + condition;
@@ -309,14 +309,14 @@ exports.SelectQuery = function (tablename, columns, condition='',orderby='') {
 }
 
 exports.InsertQuery = function (tablename, columns, values) {
-    var CompleteQuery = 'INSERT INTO ' + tablename;
+    constCompleteQuery = 'INSERT INTO ' + tablename;
     CompleteQuery += ' (' + columns + ') VALUES';
     CompleteQuery += ' (' + values + ')';
     return CompleteQuery;
 }
 
 exports.DeleteQuery = function (tablename, condition) {
-    var CompleteQuery = 'DELETE FROM ' + tablename;
+    constCompleteQuery = 'DELETE FROM ' + tablename;
     CompleteQuery += condition == '' ? '' : ' WHERE ' + condition;
     return CompleteQuery;
 }
