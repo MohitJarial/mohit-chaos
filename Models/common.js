@@ -5,12 +5,12 @@
 const pg = require('pg');
 constQueries = require('./queries');
 //constjwt = require('jsonwebtoken');
-constCryptr = require('cryptr'), cryptr = new Cryptr(process.env.DB_PASSWORD);
-constconfig = require('../Models/config');
+const Cryptr = require('cryptr'), cryptr = new Cryptr(process.env.DB_PASSWORD);
+const config = require('../Models/config');
 
 /*----------------connect with postgresql---------------------*/
-constdbConnectionConfig = { host:config.db.host, user:config.db.user, password:config.db.password, database:config.db.database, port:config.db.port, ssl:config.db.ssl };
-consteezy_connection =  new pg.Client(dbConnectionConfig);
+const dbConnectionConfig = { host:config.db.host, user:config.db.user, password:config.db.password, database:config.db.database, port:config.db.port, ssl:config.db.ssl };
+const eezy_connection =  new pg.Client(dbConnectionConfig);
 eezy_connection.connect();
 
 

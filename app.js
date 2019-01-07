@@ -42,7 +42,7 @@ app.use(function (req, res, next) {
 });
 
 rollbar.init(process.env.ROLLBAR_ACCESS_TOKEN, { environment: process.env.ENVIRONMENT });
-app.use((err, req, res, next)=> {
+app.use((err, req, res, next) => {
   if (err.status == 404) {
     res.render('404', { layout: null, url: req.url });
   }
