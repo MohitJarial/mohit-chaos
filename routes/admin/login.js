@@ -12,4 +12,14 @@ router.get('/login', function (req, res, next) {
   res.render('admin/login', { AdminTitle: ':: Admin : Login ::'});
 });
 
+/**
+ * Login page
+* @method Login
+*/
+router.get('/error', function (req, res, next) {
+ next("No routes found")
+});
+
+
+
 module.exports = router;

@@ -25,16 +25,16 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressSession({ secret: 'max', saveUninitialized: false, resave: false }));
 app.use('/', index);
- app.use('/admin', require('./routes/admin/login'));
+app.use('/admin', require('./routes/admin/login'));
 // app.use('/api', require('./routes/api/users'));
 
-app.get('/favicon.ico', (req, res)=> {
+app.get('/favicon.ico', (req, res) => {
   res.send(200);
 });
 
 app.use('/public', express.static(__dirname + '/public'));
 app.use('/out', express.static(__dirname + '/out'));
-app.use((req, res, next)=> {
+app.use((req, res, next) => {
   const err = new Error('Not Found');
   err.status = 404;
   next(err);
