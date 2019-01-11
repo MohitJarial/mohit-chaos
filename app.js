@@ -25,8 +25,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressSession({ secret: 'max', saveUninitialized: false, resave: false }));
 app.use('/', index);
-app.use('/admin', require('./routes/admin/login'));
-app.use('/api', require('./routes/api/users'));
+ app.use('/admin', require('./routes/admin/login'));
+// app.use('/api', require('./routes/api/users'));
 
 app.get('/favicon.ico', (req, res)=> {
   res.send(200);
